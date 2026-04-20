@@ -345,10 +345,15 @@
             }
 
             .subtitle {
-                margin: 0 auto 4px;
-                font-size: 0.72rem;
-                line-height: 1.22;
-                max-width: 290px;
+                margin: 0 auto 3px;
+                font-size: 0.68rem;
+                line-height: 1.2;
+                max-width: 280px;
+                /* truncate to 2 lines on mobile */
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
 
             .visual-wrap {
@@ -357,19 +362,19 @@
             }
 
             .tarot-card {
-                width: min(160px, 38vw);
-                padding: 6px;
-                border-radius: 14px;
+                width: min(220px, 54vw);
+                padding: 8px;
+                border-radius: 18px;
             }
 
             .tarot-frame {
-                border-radius: 10px;
+                border-radius: 12px;
             }
 
             .tarot-label {
-                margin-top: 4px;
-                font-size: 0.45rem;
-                letter-spacing: 0.14em;
+                margin-top: 5px;
+                font-size: 0.52rem;
+                letter-spacing: 0.16em;
             }
 
             .details {
