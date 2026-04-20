@@ -3,248 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Us & Us</title>
+    <title>System ICOT QR</title>
     <meta
       name="description"
-      content="Zaluu hosuuddaa zoriulsan zurag, video, zahia, Q&A-tai dursamjiin website."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
-      rel="stylesheet"
+      content="A minimal QR card that opens System ICOT."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top">us & us</a>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#moments">Moments</a>
-          <a href="#video">Video</a>
-          <a href="#letter">Letter</a>
-          <a href="#fun">Fun Q&amp;A</a>
-        </nav>
-      </header>
+    <main class="page">
+      <section class="qr-card" aria-labelledby="qr-title">
+        <p class="eyebrow">System ICOT</p>
+        <h1 id="qr-title">Scan to open the site</h1>
+        <p class="subtitle">Minimal QR card for quick access to systemicot.vercel.app</p>
 
-      <main id="top">
-        <section class="hero-panel">
-          <div class="hero-copy">
-            <p class="eyebrow">our little universe</p>
-            <h1>Hamgiin goyo dursamj mini chamaas ehledeg.</h1>
-            <p class="lede">
-              Ene bol bidnii zurag, bichleg, jijig zahia, ineedtei asuult-hariult,
-              hamt hiih moroodliig neg dor hadgalsan jijig digital dursamj.
-            </p>
+        <div class="qr-frame">
+          <img
+            class="qr-image"
+            src="./assets/systemicot-qr.png"
+            alt="QR code linking to systemicot.vercel.app"
+          />
+        </div>
 
-            <div class="hero-actions">
-              <a class="button button-primary" href="#moments">Zurag uzeh</a>
-              <a class="button button-secondary" href="#video">Bichleg uzeh</a>
-            </div>
-
-            <div class="pill-row">
-              <span>favorite person</span>
-              <span>best mood</span>
-              <span>late-night talks</span>
-            </div>
-          </div>
-
-          <aside class="hero-stack">
-            <article class="polaroid-card hero-photo">
-              <img src="assets/hero-memory.jpeg" alt="Hoyulaa tevreltsen dursamj" />
-              <p>Chi + Bi</p>
-            </article>
-
-            <article class="quote-card">
-              <p class="eyebrow">tiny note</p>
-              <h2>Chi baidag uchraas engiin odor hurtel unetei sanagddag.</h2>
-            </article>
-          </aside>
-        </section>
-
-        <section class="story-grid">
-          <article class="story-card">
-            <p class="eyebrow">first vibe</p>
-            <h2>Hamgiin saihan ehlel</h2>
-            <p>Bidnii ehlel tom bish baisan ch setgeld hamgiin tod uldsen.</p>
-          </article>
-          <article class="story-card">
-            <p class="eyebrow">favorite thing</p>
-            <h2>Hamt baih l hangalttai</h2>
-            <p>Yug ch hiigeegui baisan hamt suusan agshnuud hurtel dursamj boldog.</p>
-          </article>
-          <article class="story-card accent-card">
-            <p class="eyebrow">current status</p>
-            <h2>Still crushing on you</h2>
-            <p>Odor bolgon shineer durlaad baigaa yum shig l sanagddag.</p>
-          </article>
-        </section>
-
-        <section class="section" id="moments">
-          <div class="section-heading">
-            <p class="eyebrow">moments we keep</p>
-            <h2>Zaluu hosuuddaa zohih, clean bas dulaahan gallery.</h2>
-          </div>
-
-          <div class="moments-grid">
-            <figure class="gallery-card large-card">
-              <img src="assets/hero-memory.jpeg" alt="Hoyulaa unseltssen dursamj" />
-              <figcaption>Hamgiin dulaahan tevreltiig hadgalsan agshin.</figcaption>
-            </figure>
-
-            <figure class="gallery-card portrait-card">
-              <img src="assets/neon-kiss.jpeg" alt="Neon gerlen dor selfie" />
-              <figcaption>Gerel baga, vibe ihtei oroi.</figcaption>
-            </figure>
-
-            <figure class="gallery-card portrait-card">
-              <img src="assets/holding-hands.jpeg" alt="Gar garaasaa barisan agshin" />
-              <figcaption>Jijig ch gesen hamgiin dotno medremj.</figcaption>
-            </figure>
-
-            <article class="gallery-card note-block">
-              <p class="eyebrow">why this hits</p>
-              <h3>Zurag bur neg l yum sanuuldag</h3>
-              <p>
-                Neg ni ineed, neg ni chimeegui tevrel, neg ni zugeer l chamtai
-                baikhad l yamar goyo baidgiig sanuulna.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section split-layout" id="video">
-          <article class="video-card">
-            <p class="eyebrow">play this back</p>
-            <h2>Bidnii bichlegtei heseg</h2>
-            <div class="video-shell">
-              <video
-                src="assets/memory-video.mov"
-                controls
-                playsinline
-                preload="metadata"
-                poster="assets/hero-memory.jpeg"
-              >
-                Tanii browser ene videogiig shuud toglohuugui baina.
-              </video>
-            </div>
-            <p class="helper-text">
-              Hervee browser deer toglohgui bol
-              <a href="assets/memory-video.mov" target="_blank" rel="noreferrer">video-g shuud neegeerei</a>.
-            </p>
-          </article>
-
-          <article class="letter-card" id="letter">
-            <p class="eyebrow">private message</p>
-            <h2>Chamdaa</h2>
-            <p>
-              Chi minii odor buriin hamgiin dulaahan heseg. Hamt ongoruulsen jijig
-              agshin, ineed, neg negnee harsan ter harats hurtel nadad hamgiin
-              unetei dursamj boldog.
-            </p>
-            <p>
-              Ene huudas bol bidnii tuhai bagahan sanuulga. Odoo ch, daraa ch,
-              chamaitai holbootoi buh zuil mini ontsgoi.
-            </p>
-            <p class="signature">Always on your side.</p>
-          </article>
-        </section>
-
-        <section class="section" id="fun">
-          <div class="section-heading">
-            <p class="eyebrow">fun q&amp;a</p>
-            <h2>Bidniig iluu bidniikh bolgoh jijig asuultuud.</h2>
-          </div>
-
-          <div class="qa-grid">
-            <article class="qa-card">
-              <p class="qa-question">Bidnii hamgiin goyo bolzoonii idea yu ve?</p>
-              <div class="answer-buttons">
-                <button type="button" data-answer="Zugeer l hamt udaan yaria hiih ni hamgiin cute ni.">Coffee date</button>
-                <button type="button" data-answer="Neon gerel, snack, hamt suuh ni bas super cute.">Kino uzekh</button>
-                <button type="button" data-answer="Salhind alhaad hamt hugjiltei yaria hiih ni romantic.">Night walk</button>
-                <button type="button" data-answer="Yag oorsdiin vibe-taigaar anywhere bol bolzoon shuu.">Haana ch hamaagui</button>
-              </div>
-              <p class="answer-output">Neg hariult songooroi.</p>
-            </article>
-
-            <article class="qa-card">
-              <p class="qa-question">Chi nadtai baihdaa hamgiin durtai medremjee yu gej heldeg ve?</p>
-              <div class="answer-buttons">
-                <button type="button" data-answer="Amar taivan medremj bol hamgiin dulaahan ni.">Amar taivan</button>
-                <button type="button" data-answer="Hugjiltei energy ni bidniig iluu hoorhon bolgodog.">Hugjiltei</button>
-                <button type="button" data-answer="Secure baidal bol hamgiin saihan medremj.">Ayulgui</button>
-                <button type="button" data-answer="Yag zuv hunee olson yum shig sanagddag ni hamgiin ontsgoi.">Zuv hunteigee</button>
-              </div>
-              <p class="answer-output">Neg hariult songooroi.</p>
-            </article>
-
-            <article class="qa-card">
-              <p class="qa-question">Bid 1 jiliin daraa yamar dursamj nemeh bol?</p>
-              <div class="answer-buttons">
-                <button type="button" data-answer="Shine ayalal hamgiin goyo next chapter baij bolno.">Ayalal</button>
-                <button type="button" data-answer="Photo dump-iin shine collection end nemegdeh bolno.">Olon zurag</button>
-                <button type="button" data-answer="Dahin dahin unshmaar zahia nar nemeh ni hoorhon.">Zahia</button>
-                <button type="button" data-answer="Bugd ni hamt baival bur goyo.">Bugd ni</button>
-              </div>
-              <p class="answer-output">Neg hariult songooroi.</p>
-            </article>
-
-            <article class="qa-card">
-              <p class="qa-question">Nadad helj baisan hamgiin hoorhon ug chini yu ve?</p>
-              <div class="answer-buttons">
-                <button type="button" data-answer="Minii hun gej heleh ni mash dotno sonsogddog.">Minii hun</button>
-                <button type="button" data-answer="Sanaj baina gej heleh ni hamgiin dulaahan.">Sanaj baina</button>
-                <button type="button" data-answer="Hairtai gej heleh bol hezee ch iluudahgui.">Hairtai</button>
-                <button type="button" data-answer="Ene hesegt ta hoyr oorsdiin durtai uguu daraa ni solij bolno.">Oorsdiin ug</button>
-              </div>
-              <p class="answer-output">Neg hariult songooroi.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="plans-panel">
-          <div class="plans-copy">
-            <p class="eyebrow">next up</p>
-            <h2>Hamt hiih jijig muruudul</h2>
-          </div>
-
-          <div class="plans-list">
-            <article>
-              <span>01</span>
-              <h3>Neg cute date</h3>
-              <p>Onoch boloh jijig cafe, concert, esvel city night walk.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Neg daraagiin photo dump</h3>
-              <p>Hamt avhuulah 10 shine zuragnii list gargah.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Neg future promise</h3>
-              <p>Yamar ch busy baisan hamt baih tsagaa oloh.</p>
-            </article>
-          </div>
-        </section>
-      </main>
-    </div>
-    <script>
-      const qaCards = document.querySelectorAll(".qa-card");
-
-      qaCards.forEach((card) => {
-        const buttons = card.querySelectorAll(".answer-buttons button");
-        const output = card.querySelector(".answer-output");
-
-        buttons.forEach((button) => {
-          button.addEventListener("click", () => {
-            buttons.forEach((item) => item.classList.remove("is-selected"));
-            button.classList.add("is-selected");
-            output.textContent = button.dataset.answer;
-          });
-        });
-      });
-    </script>
+        <a class="qr-link" href="https://systemicot.vercel.app">
+          systemicot.vercel.app
+        </a>
+      </section>
+    </main>
   </body>
 </html>
