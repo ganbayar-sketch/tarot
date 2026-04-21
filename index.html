@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="МУИС-РОТАРАКТ клубийн &quot;MOONARC&quot; урилга" />
-    <meta property="og:description" content="МУИС-РОТАРАКТ клубийн зүгээс зохион байгуулж буй &quot;BE THE LIGHT&quot; төслийн хөрөнгө босгох &quot;MOONARC&quot; тарот, зурхайн үйл ажиллагаанд оролцож, сайн үйлсийн нэгэн хэсэг болохыг урьж байна." />
-    <title>MOONARC Tarot Event Invitation</title>
+    <title>Tarot Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
@@ -278,14 +276,15 @@
             color: var(--gold);
             font-size: 0.95rem;
         }
+
         /* ─── MOBILE FIX ─── */
-        
         @media (max-width: 720px) {
             body {
                 padding: 0;
                 overflow: hidden;
                 height: 100dvh;
             }
+
             .frame {
                 width: calc(100% - 10px);
                 height: calc(100dvh - 10px);
@@ -293,132 +292,166 @@
                 padding: 6px;
                 border-radius: 18px;
             }
+
             .invite {
                 height: 100%;
                 padding: 12px 12px 10px;
                 border-radius: 14px;
-                justify-content: space-between;
+                justify-content: flex-start;
             }
+
+            /* content: flex column, fills height, no overflow */
+            .content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 0;
+            }
+
             .crest {
-                font-size: 0.52rem;
-                letter-spacing: 0.2em;
-                margin-bottom: 2px;
-            }
-            .club {
-                font-size: 0.82rem;
-                margin: 0;
-            }
-            .decor-top-left {
-                top: 8px;
-                left: 8px;
-                width: 80px;
-                opacity: 0.55;
-            }
-            .decor-top-right {
-                top: 10px;
-                right: 8px;
-                width: 64px;
-                opacity: 0.45;
-            }
-            .decor-bottom {
-                right: 8px;
-                bottom: 8px;
-                width: 90px;
-                opacity: 0.32;
-            }
-            h1 {
-                margin: 2px 0 0px;
-                font-size: clamp(2.2rem, 11vw, 3.4rem);
-                line-height: 0.88;
-            }
-            .icons {
-                gap: 8px;
-                margin: 2px auto 2px;
-                font-size: 0.8rem;
-            }
-            .subtitle {
-                margin: 0 auto 3px;
-                font-size: 0.68rem;
-                line-height: 1.2;
-                max-width: 280px;
-                /* truncate to 2 lines on mobile */
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .visual-wrap {
-                margin: 0 auto;
                 flex-shrink: 0;
+                font-size: 0.5rem;
+                letter-spacing: 0.18em;
+                margin-bottom: 1px;
             }
+
+            .club {
+                flex-shrink: 0;
+                font-size: 0.78rem;
+                margin: 0 0 1px;
+            }
+
+            h1 {
+                flex-shrink: 0;
+                margin: 1px 0 1px;
+                font-size: clamp(2rem, 10vw, 3rem);
+                line-height: 0.9;
+            }
+
+            .icons {
+                flex-shrink: 0;
+                gap: 8px;
+                margin: 2px auto;
+                font-size: 0.75rem;
+            }
+
+            /* subtitle: shrink allowed but never hidden */
+            .subtitle {
+                flex-shrink: 1;
+                margin: 0 auto 4px;
+                font-size: 0.63rem;
+                line-height: 1.28;
+                max-width: 290px;
+                overflow: visible;
+            }
+
+            /* card: shrinks if needed so subtitle stays visible */
+            .visual-wrap {
+                flex: 1 1 auto;
+                min-height: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            }
+
             .tarot-card {
-                width: min(220px, 54vw);
-                padding: 8px;
-                border-radius: 18px;
+                /* height-based sizing so it never overflows */
+                width: auto;
+                height: min(34dvh, 195px);
+                aspect-ratio: 320 / 430;
+                padding: 6px;
+                border-radius: 16px;
             }
+
             .tarot-frame {
-                border-radius: 12px;
+                border-radius: 10px;
+                height: 100%;
             }
+
+            .tarot-svg {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
             .tarot-label {
-                margin-top: 5px;
-                font-size: 0.52rem;
-                letter-spacing: 0.16em;
+                margin-top: 4px;
+                font-size: 0.48rem;
+                letter-spacing: 0.14em;
             }
+
             .details {
                 display: none;
             }
-            /* Mobile details row — compact 3 columns */
+
+            /* Mobile details row */
             .details-mobile {
+                flex-shrink: 0;
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 5px;
+                gap: 4px;
                 max-width: 100%;
                 margin: 4px 0 0;
             }
+
             .detail-m {
-                padding: 6px 5px;
-                border-radius: 10px;
+                padding: 5px 4px;
+                border-radius: 9px;
                 border: 1px solid rgba(255, 228, 255, 0.14);
                 background: rgba(11, 3, 18, 0.38);
                 text-align: center;
             }
+
             .detail-m span {
                 font-family: "Cinzel", serif;
                 display: block;
-                font-size: 0.42rem;
-                letter-spacing: 0.12em;
+                font-size: 0.4rem;
+                letter-spacing: 0.1em;
                 text-transform: uppercase;
                 color: var(--gold);
-                margin-bottom: 3px;
+                margin-bottom: 2px;
             }
+
             .detail-m strong {
                 font-family: "Cormorant Garamond", serif;
-                font-size: 0.72rem;
+                font-size: 0.7rem;
                 line-height: 1.15;
                 color: var(--text);
                 display: block;
             }
+
             .footer-note {
+                flex-shrink: 0;
                 margin-top: 4px;
-                font-size: 0.72rem;
+                font-size: 0.68rem;
                 line-height: 1.22;
                 max-width: 290px;
                 margin-left: auto;
                 margin-right: auto;
+                margin-bottom: 0;
+            }
+
+            .decor-top-left {
+                top: 8px; left: 8px;
+                width: 80px; opacity: 0.55;
+            }
+            .decor-top-right {
+                top: 10px; right: 8px;
+                width: 64px; opacity: 0.45;
+            }
+            .decor-bottom {
+                right: 8px; bottom: 8px;
+                width: 90px; opacity: 0.32;
             }
         }
+
         /* Very small phones */
-        
         @media (max-width: 380px) {
-            h1 {
-                font-size: clamp(1.9rem, 10vw, 2.8rem);
-            }
-            .subtitle {
-                font-size: 0.66rem;
-            }
-            .tarot-card {
-                width: min(140px, 36vw);
-            }
+            h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+            .subtitle { font-size: 0.59rem; }
+            .tarot-card { height: min(30dvh, 170px); }
         }
     </style>
 </head>
@@ -487,7 +520,7 @@
                     <span>✧</span>
                 </div>
                 <p class="subtitle">
-                    таныг МУИС-РОТАРАКТ клубийн зүгээс зохион байгуулж буй “BE THE LIGHT” төслийн хөрөнгө босгох “MOONARC” тарот, зурхайн үйл ажиллагаанд оролцож, сайн үйлсийн нэгэн хэсэг болохыг урьж байна.
+                    Таныг МУИС-РОТАРАКТ клубийн зүгээс зохион байгуулж буй "BE THE LIGHT" төслийн хөрөнгө босгох "MOONARC" тарот, зурхайн үйл ажиллагаанд оролцож, сайн үйлсийн нэгэн хэсэг болохыг урьж байна.
                 </p>
 
                 <div class="visual-wrap">
@@ -587,7 +620,7 @@
                 <div class="details-mobile">
                     <div class="detail-m">
                         <span>location</span>
-                        <strong>American university of mongolia</strong>
+                        <strong>AUM</strong>
                     </div>
                     <div class="detail-m">
                         <span>hosted by</span>
