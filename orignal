@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarot Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <style>
+         :root {
+            --bg-deep: #17011f;
+            --bg-mid: #35084d;
+            --bg-soft: #5f1b77;
+            --glow: #c67cff;
+            --glow-soft: rgba(214, 154, 255, 0.35);
+            --card: rgba(33, 8, 49, 0.78);
+            --line: rgba(240, 203, 255, 0.24);
+            --text: #fff6ff;
+            --muted: #e2c7ef;
+            --gold: #ffd58f;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
+            font-family: "Cormorant Garamond", "Times New Roman", serif;
+            color: var(--text);
+            background: radial-gradient(circle at top, rgba(214, 154, 255, 0.22), transparent 28%), radial-gradient(circle at 20% 20%, rgba(255, 213, 143, 0.14), transparent 16%), radial-gradient(circle at 80% 18%, rgba(247, 160, 255, 0.18), transparent 18%), linear-gradient(140deg, var(--bg-deep), var(--bg-mid) 45%, #23032e 100%);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+        
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+        
+        body::before {
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.5px), radial-gradient(circle, rgba(255, 255, 255, 0.45) 0 1px, transparent 1.5px);
+            background-position: 0 0, 28px 32px;
+            background-size: 56px 56px, 84px 84px;
+            opacity: 0.28;
+        }
+        
+        body::after {
+            background: radial-gradient(circle at 50% 100%, rgba(198, 124, 255, 0.24), transparent 35%), linear-gradient(transparent, rgba(10, 0, 15, 0.32));
+        }
+        
+        .frame {
+            width: min(960px, calc(100% - 32px));
+            height: calc(100dvh - 24px);
+            margin: 12px 16px;
+            padding: 12px;
+            border-radius: 32px;
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset, 0 24px 70px rgba(7, 0, 12, 0.55);
+            backdrop-filter: blur(12px);
+        }
+        
+        .invite {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            padding: 24px 24px 18px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 223, 255, 0.15);
+            background: radial-gradient(circle at top center, rgba(198, 124, 255, 0.22), transparent 34%), linear-gradient(180deg, rgba(79, 21, 103, 0.9), rgba(25, 4, 38, 0.96));
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .invite::before,
+        .invite::after {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            filter: blur(18px);
+            opacity: 0.55;
+            pointer-events: none;
+        }
+        
+        .invite::before {
+            top: -80px;
+            left: -80px;
+            background: radial-gradient(circle, rgba(198, 124, 255, 0.55), transparent 70%);
+        }
+        
+        .invite::after {
+            right: -80px;
+            bottom: -90px;
+            background: radial-gradient(circle, rgba(255, 213, 143, 0.22), transparent 70%);
+        }
+        
+        .decor {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+        
+        .decor svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .decor-top-left {
+            top: 18px;
+            left: 18px;
+            width: 150px;
+            opacity: 0.72;
+        }
+        
+        .decor-top-right {
+            top: 26px;
+            right: 22px;
+            width: 120px;
+            opacity: 0.62;
+        }
+        
+        .decor-bottom {
+            right: 26px;
+            bottom: 16px;
+            width: 180px;
+            opacity: 0.48;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .crest {
+            font-family: "Cinzel", serif;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        
+        .club {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(1rem, 1.6vw, 1.3rem);
+            color: var(--muted);
+            margin: 0;
+        }
+        
+        h1 {
+            font-family: "Great Vibes", "Cormorant Garamond", serif;
+            margin: 6px 0 2px;
+            font-size: clamp(3rem, 7vw, 4.8rem);
+            font-weight: 400;
+            line-height: 0.92;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: #ffe7fb;
+            text-shadow: 0 0 12px rgba(255, 214, 252, 0.35), 0 0 28px rgba(198, 124, 255, 0.22);
+        }
+        
+        h1 strong {
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            max-width: 700px;
+            margin: 0 auto 10px;
+            font-size: clamp(0.94rem, 1.45vw, 1.08rem);
+            line-height: 1.3;
+            color: var(--muted);
+        }
+        
+        .visual-wrap {
+            display: grid;
+            place-items: center;
+            margin: 4px auto 10px;
+        }
+        
+        .tarot-card {
+            width: min(100%, 320px);
+            padding: 10px;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 226, 252, 0.22);
+            background: radial-gradient(circle at 50% 12%, rgba(255, 223, 156, 0.18), transparent 26%), radial-gradient(circle at 50% 88%, rgba(246, 219, 255, 0.12), transparent 24%), linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)), rgba(31, 6, 45, 0.72);
+            box-shadow: 0 0 32px rgba(198, 124, 255, 0.18), inset 0 0 30px rgba(255, 255, 255, 0.04);
+        }
+        
+        .tarot-frame {
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 226, 252, 0.18);
+            background: linear-gradient(180deg, #3f105d, #1b0328);
+        }
+        
+        .tarot-svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .tarot-label {
+            font-family: "Cinzel", serif;
+            margin-top: 7px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            font-size: 0.6rem;
+            color: var(--gold);
+        }
+        
+        .details {
+            max-width: 720px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+        
+        .detail {
+            padding: 12px 10px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 228, 255, 0.16);
+            background: rgba(11, 3, 18, 0.34);
+        }
+        
+        .detail span {
+            font-family: "Cinzel", serif;
+            display: block;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        
+        .detail strong {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 0.92rem;
+            line-height: 1.2;
+            color: var(--text);
+        }
+        
+        .footer-note {
+            font-family: "Cormorant Garamond", serif;
+            margin-top: 8px;
+            font-size: 0.92rem;
+            line-height: 1.28;
+            color: #f3dfff;
+        }
+        
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto 6px;
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        /* ─── MOBILE FIX ─── */
+        @media (max-width: 720px) {
+            body {
+                padding: 0;
+                overflow: hidden;
+                height: 100dvh;
+            }
+
+            .frame {
+                width: calc(100% - 10px);
+                height: calc(100dvh - 10px);
+                margin: 5px;
+                padding: 6px;
+                border-radius: 18px;
+            }
+
+            .invite {
+                height: 100%;
+                padding: 12px 12px 10px;
+                border-radius: 14px;
+                justify-content: flex-start;
+            }
+
+            /* content: flex column, fills height, no overflow */
+            .content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 0;
+            }
+
+            .crest {
+                flex-shrink: 0;
+                font-size: 0.5rem;
+                letter-spacing: 0.18em;
+                margin-bottom: 1px;
+            }
+
+            .club {
+                flex-shrink: 0;
+                font-size: 0.78rem;
+                margin: 0 0 1px;
+            }
+
+            h1 {
+                flex-shrink: 0;
+                margin: 1px 0 1px;
+                font-size: clamp(2rem, 10vw, 3rem);
+                line-height: 0.9;
+            }
+
+            .icons {
+                flex-shrink: 0;
+                gap: 8px;
+                margin: 2px auto;
+                font-size: 0.75rem;
+            }
+
+            /* subtitle: shrink allowed but never hidden */
+            .subtitle {
+                flex-shrink: 1;
+                margin: 0 auto 4px;
+                font-size: 0.63rem;
+                line-height: 1.28;
+                max-width: 290px;
+                overflow: visible;
+            }
+
+            /* card: shrinks if needed so subtitle stays visible */
+            .visual-wrap {
+                flex: 1 1 auto;
+                min-height: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            }
+
+            .tarot-card {
+                width: auto;
+                height: min(55dvh, 360px);
+                aspect-ratio: 320 / 430;
+                padding: 8px;
+                border-radius: 20px;
+            }
+
+            .tarot-frame {
+                border-radius: 10px;
+                height: 100%;
+            }
+
+            .tarot-svg {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .tarot-label {
+                margin-top: 4px;
+                font-size: 0.48rem;
+                letter-spacing: 0.14em;
+            }
+
+            .details {
+                display: none;
+            }
+
+            /* Mobile details row */
+            .details-mobile {
+                flex-shrink: 0;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+                max-width: 100%;
+                margin: 4px 0 0;
+            }
+
+            .detail-m {
+                padding: 5px 4px;
+                border-radius: 9px;
+                border: 1px solid rgba(255, 228, 255, 0.14);
+                background: rgba(11, 3, 18, 0.38);
+                text-align: center;
+            }
+
+            .detail-m span {
+                font-family: "Cinzel", serif;
+                display: block;
+                font-size: 0.4rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 2px;
+            }
+
+            .detail-m strong {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 0.7rem;
+                line-height: 1.15;
+                color: var(--text);
+                display: block;
+            }
+
+            .footer-note {
+                flex-shrink: 0;
+                margin-top: 4px;
+                font-size: 0.68rem;
+                line-height: 1.22;
+                max-width: 290px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 0;
+            }
+
+            .decor-top-left {
+                top: 8px; left: 8px;
+                width: 80px; opacity: 0.55;
+            }
+            .decor-top-right {
+                top: 10px; right: 8px;
+                width: 64px; opacity: 0.45;
+            }
+            .decor-bottom {
+                right: 8px; bottom: 8px;
+                width: 90px; opacity: 0.32;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 380px) {
+            h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+            .subtitle { font-size: 0.59rem; }
+            .tarot-card { height: min(48dvh, 300px); }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="frame">
+        <section class="invite">
+            <div class="decor decor-top-left" aria-hidden="true">
+                <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#f7d7ff" stroke-opacity="0.45" stroke-width="1.2">
+            <path d="M28 36 68 22 96 46 132 30"/>
+            <path d="M96 46 110 82 146 72"/>
+          </g>
+          <g fill="#ffd58f">
+            <circle cx="28" cy="36" r="2.6"/>
+            <circle cx="68" cy="22" r="2.6"/>
+            <circle cx="96" cy="46" r="2.8"/>
+            <circle cx="132" cy="30" r="2.4"/>
+            <circle cx="110" cy="82" r="2.3"/>
+            <circle cx="146" cy="72" r="2.1"/>
+          </g>
+          <g fill="#f9e7ff">
+            <path d="M54 108l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+            <path d="M118 122l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+          </g>
+        </svg>
+            </div>
+
+            <div class="decor decor-top-right" aria-hidden="true">
+                <svg viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
+          <path d="M88 18c-18 8-29 28-24 47 4 18 21 31 40 32-7 4-15 7-23 7-26 0-47-21-47-47 0-20 13-38 32-45 9-4 16-3 22-2Z" fill="#ffe1a1" fill-opacity="0.9"/>
+          <g fill="#f6dbff">
+            <circle cx="38" cy="28" r="2.2"/>
+            <circle cx="24" cy="58" r="1.8"/>
+            <circle cx="112" cy="116" r="2"/>
+            <path d="M102 44l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+          </g>
+        </svg>
+            </div>
+
+            <div class="decor decor-bottom" aria-hidden="true">
+                <svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#f2c8ff" stroke-opacity="0.34" stroke-width="1.2">
+            <path d="M24 72c26-30 56-44 90-42 30 2 57 15 82 40"/>
+          </g>
+          <g fill="#ffd58f">
+            <circle cx="24" cy="72" r="2.2"/>
+            <circle cx="72" cy="42" r="2.4"/>
+            <circle cx="114" cy="34" r="2.5"/>
+            <circle cx="162" cy="48" r="2.1"/>
+            <circle cx="196" cy="70" r="1.9"/>
+          </g>
+          <g fill="#f6dbff">
+            <path d="M118 74l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+          </g>
+        </svg>
+            </div>
+
+            <div class="content">
+                <div class="crest">Special Invitation</div>
+                <p class="club">NUM Rotaract Club</p>
+                <h1><strong>MOONARC</strong></h1>
+                <div class="icons">
+                    <span>✦</span>
+                    <span>☾</span>
+                    <span>✧</span>
+                </div>
+                <p class="subtitle">
+                    Таныг МУИС-РОТАРАКТ клубийн зүгээс зохион байгуулж буй "BE THE LIGHT" төслийн хөрөнгө босгох "MOONARC" тарот, зурхайн үйл ажиллагаанд оролцож, сайн үйлсийн нэгэн хэсэг болохыг урьж байна.
+                </p>
+
+                <div class="visual-wrap">
+                    <div class="tarot-card">
+                        <div class="tarot-frame">
+                            <svg class="tarot-svg" viewBox="0 0 320 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tarot inspired illustration">
+                <defs>
+                  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6f2a96"/>
+                    <stop offset="55%" stop-color="#2d0b43"/>
+                    <stop offset="100%" stop-color="#16031f"/>
+                  </linearGradient>
+                  <linearGradient id="ornament" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ffe5a9"/>
+                    <stop offset="100%" stop-color="#f0c6ff"/>
+                  </linearGradient>
+                  <radialGradient id="moonGlow" cx="50%" cy="22%" r="28%">
+                    <stop offset="0%" stop-color="#fff3bf" stop-opacity="1"/>
+                    <stop offset="55%" stop-color="#f0c6ff" stop-opacity="0.55"/>
+                    <stop offset="100%" stop-color="#f0c6ff" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect width="320" height="430" fill="url(#sky)"/>
+                <g opacity="0.75">
+                  <path d="M64 30h34l8 8M222 30h34l-8 8M64 400h34l8-8M222 400h34l-8-8" fill="none" stroke="url(#ornament)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M160 28l4 9 9 4-9 4-4 9-4-9-9-4 9-4zM160 402l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="#f8dfab"/>
+                </g>
+                <circle cx="160" cy="110" r="70" fill="url(#moonGlow)"/>
+                <circle cx="160" cy="110" r="34" fill="#fff1c7"/>
+                <g fill="#f8d6ff" opacity="0.8">
+                  <circle cx="62" cy="72" r="2.5"/>
+                  <circle cx="96" cy="52" r="2"/>
+                  <circle cx="244" cy="64" r="2.5"/>
+                  <circle cx="275" cy="102" r="1.8"/>
+                  <circle cx="231" cy="138" r="1.8"/>
+                  <circle cx="86" cy="132" r="1.6"/>
+                  <circle cx="53" cy="176" r="1.6"/>
+                  <circle cx="266" cy="176" r="1.6"/>
+                  <circle cx="52" cy="336" r="1.6"/>
+                  <circle cx="268" cy="336" r="1.6"/>
+                </g>
+                <g fill="none" stroke="#f3d7ff" stroke-opacity="0.3" stroke-width="1.2">
+                  <path d="M52 176 82 156 106 176"/>
+                  <path d="M268 176 238 156 214 176"/>
+                  <path d="M52 336 82 316 106 336"/>
+                  <path d="M268 336 238 316 214 336"/>
+                </g>
+                <g stroke="#f8d59b" stroke-width="2.5" stroke-linecap="round" opacity="0.95">
+                  <path d="M160 175v38"/>
+                  <path d="M141 194h38"/>
+                  <path d="M146 180l28 28"/>
+                  <path d="M174 180l-28 28"/>
+                </g>
+                <g fill="#ffe8b9" opacity="0.85">
+                  <path d="M95 242l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+                  <path d="M225 242l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+                </g>
+                <path d="M111 145c18 10 34 14 49 14 16 0 32-4 49-14" fill="none" stroke="#f6dbff" stroke-opacity="0.35" stroke-width="1.8"/>
+                <path d="M85 355c22-86 53-126 75-126 24 0 53 40 77 126" fill="rgba(17,4,24,0.75)" stroke="#f3d5ff" stroke-opacity="0.36" stroke-width="2"/>
+                <circle cx="160" cy="208" r="22" fill="#14041f"/>
+                <path d="M132 360c10-77 17-116 28-116 10 0 18 39 28 116" fill="#2a0938"/>
+                <path d="M111 365c16-26 35-42 49-42 15 0 34 16 50 42" fill="#3e0f56"/>
+                <path d="M138 205c0-14 10-24 22-24s22 10 22 24-10 26-22 26-22-12-22-26Z" fill="#14041f"/>
+                <path d="M124 185c11-18 24-28 36-28s25 10 36 28" fill="none" stroke="#f4d2ff" stroke-opacity="0.45" stroke-width="2"/>
+                <path d="M106 383h108" stroke="#f4d2ff" stroke-opacity="0.28" stroke-width="2"/>
+                <path d="M92 382c22-9 44-14 68-14 25 0 48 5 70 14" fill="none" stroke="#ffd58f" stroke-opacity="0.22" stroke-width="1.4"/>
+                <rect x="18" y="18" width="284" height="394" rx="18" fill="none" stroke="#f5d7ff" stroke-opacity="0.22" stroke-width="2"/>
+                <rect x="34" y="34" width="252" height="362" rx="14" fill="none" stroke="#ffd58f" stroke-opacity="0.24" stroke-width="1.5"/>
+                <rect x="46" y="46" width="228" height="338" rx="10" fill="none" stroke="#f6dbff" stroke-opacity="0.16" stroke-width="1"/>
+                <text x="160" y="62" text-anchor="middle" fill="#ffd58f" font-size="18" letter-spacing="5" style="font-family: 'Cinzel', serif;">THE TAROT</text>
+                <text x="160" y="84" text-anchor="middle" fill="#f3d9ff" font-size="10" letter-spacing="4" style="font-family: 'Cinzel', serif;">SPECIAL GUEST</text>
+                <text x="160" y="376" text-anchor="middle" fill="#ffd58f" font-size="32" style="font-family: 'Great Vibes', cursive;">Delgermurun</text>
+                <text x="160" y="398" text-anchor="middle" fill="#f3d9ff" font-size="15" letter-spacing="4" style="font-family: 'Cinzel', serif;">MYSTIC NIGHT</text>
+              </svg>
+                        </div>
+                        <div class="tarot-label">Mystic Card Visual</div>
+                    </div>
+                </div>
+
+                <!-- Desktop details -->
+                <div class="details">
+                    <article class="detail">
+                        <span>location</span>
+                        <strong>American university of mongolia</strong>
+                    </article>
+                    <article class="detail">
+                        <span>Hosted by</span>
+                        <strong>NUM Rotaract Club Volunteers</strong>
+                    </article>
+                    <article class="detail">
+                        <span>date time</span>
+                        <strong>2026.04.25 18:00</strong>
+                    </article>
+                </div>
+
+                <!-- Mobile details (compact) -->
+                <div class="details-mobile">
+                    <div class="detail-m">
+                        <span>location</span>
+                        <strong>AUM</strong>
+                    </div>
+                    <div class="detail-m">
+                        <span>hosted by</span>
+                        <strong>NUM Rotaract</strong>
+                    </div>
+                    <div class="detail-m">
+                        <span>date & time</span>
+                        <strong>04.25 · 18:00</strong>
+                    </div>
+                </div>
+
+                <p class="footer-note">
+                    Та бүхнийг ид шидийн өнгө аястай, дурсамжтай үдшийн зочноор хүндэтгэн урьж байна.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
